@@ -280,7 +280,7 @@ h1,h2,h3,.vtitle,.big,.quote{font-family:"Shippori Mincho B1",serif}
 <script>
 /* SALE GATE: JST client-side check. pre: <2026-11-24 20:00 JST, open, closed: >=2026-11-28 00:00 JST */
 (function(){var S=Date.parse('2026-11-24T20:00:00+09:00'),E=Date.parse('2026-11-28T00:00:00+09:00');
-function st(){var n=Date.now();return n<S?'pre':(n>=E?'closed':'open')}
+function st(){var n=Date.now();return n>=E?'closed':'open'}/* 2026-11-05 ユーザー指示: 販売前もLPを常時表示（pre待機画面は使わない）。締切後の closed のみ残す */
 window.__saleState=st;document.documentElement.setAttribute('data-sale',st());})();
 </script>
 <style>
