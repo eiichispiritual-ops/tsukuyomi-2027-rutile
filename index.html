@@ -281,10 +281,13 @@ h1,h2,h3,.vtitle,.big,.quote{font-family:"Shippori Mincho B1",serif}
 /* SALE GATE: JST client-side check. pre: <2026-11-24 20:00 JST, open, closed: >=2026-11-28 00:00 JST */
 (function(){var S=Date.parse('2026-11-24T20:00:00+09:00'),E=Date.parse('2026-11-28T00:00:00+09:00');
 function st(){var n=Date.now();return n>=E?'closed':'open'}/* 2026-11-05 ユーザー指示: 販売前もLPを常時表示（pre待機画面は使わない）。締切後の closed のみ残す */
-window.__saleState=st;document.documentElement.setAttribute('data-sale',st());})();
+window.__saleState=st;document.documentElement.setAttribute('data-sale',st());
+var n0=Date.now(),R=document.documentElement;R.setAttribute('data-phase',n0<S?'pre':'post');R.setAttribute('data-p23',n0<Date.parse('2026-11-23T06:00:00+09:00')?'pre':'post');})();
 </script>
 <style>
 #salegate{display:none}
+html[data-phase=pre] .ph-post,html[data-phase=post] .ph-pre,html[data-p23=pre] .p23-post,html[data-p23=post] .p23-pre{display:none}
+html:not([data-phase]) .ph-pre,html:not([data-p23]) .p23-pre{display:none}
 html[data-sale=pre] body>*:not(#salegate),html[data-sale=closed] body>*:not(#salegate){display:none!important}
 html[data-sale=pre] #salegate,html[data-sale=closed] #salegate{display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:40px 24px;background:#0b1426;color:#eef3fb;font-size:18px;line-height:2}
 #salegate .c,#salegate .p{display:none}
@@ -302,7 +305,7 @@ html[data-sale=pre] #salegate .p,html[data-sale=closed] #salegate .c{display:blo
   <div class="hero-veil" aria-hidden="true"></div>
   <canvas id="dust" aria-hidden="true"></canvas>
   <div class="hero-inner">
-    <div class="hero-kicker">11月24日 20:00 ── お迎えの扉が、開きました</div>
+    <div class="hero-kicker"><span class="ph-pre">11月24日 20:00 ── お迎えの扉が、開きます</span><span class="ph-post">11月24日 20:00 ── お迎えの扉が、開きました</span></div>
     <h1 class="hero-title">白蛇の金糸<br>極上ルチル</h1>
     <div class="hero-sub">止まった時を、もう一度動かす</div>
     <div><span class="hero-limit">限 定 30 本 ・ 再 入 荷 な し</span></div>
@@ -366,7 +369,7 @@ html[data-sale=pre] #salegate .p,html[data-sale=closed] #salegate .c{display:blo
       <div class="ph tl rv" style="margin:26px 0"><img src="https://eiichispiritual-ops.github.io/tsukuyomi-2027-rutile/img/india_new.jpg" alt="インドの聖地にて"><div class="cap">現地にて</div></div>
       <div class="ti"><p class="d">ルチル鑑定</p><p>お預かりした名前と生まれた日と願いをもとに、1人ずつ、視させていただきました。</p></div>
       <div class="ti"><p class="d">１１月２３日 ── 夜明け前</p><p>聖地の山に登り、お預かりした願いを、一つ残らず読み上げました。</p></div>
-      <div class="ti now"><p class="d">１１月２４日 ２０:００ ── 今夜</p><p>選ばれたあなたに、お迎えの扉が開きました。</p></div>
+      <div class="ti now"><p class="d">１１月２４日 ２０:００</p><p><span class="ph-pre">選ばれたあなたに、お迎えの扉が開きます。</span><span class="ph-post">選ばれたあなたに、お迎えの扉が開きました。</span></p></div>
     </div>
   </div>
 </section>
@@ -436,7 +439,7 @@ html[data-sale=pre] #salegate .p,html[data-sale=closed] #salegate .c{display:blo
     <p class="rv"><strong>優しい人ほど、時計は早く止まります</strong>。人の都合を先に考えられる人ほど、自分の番を譲ってしまう。いちばん優しい人が、いちばん長く止まったままになる。あなたの中に積もっているのは、<em>後回しにしてきた年月</em>です。</p>
     <p class="rv">その止まった時計が、本来あなたに降り注ぐはずだった豊かさも、ご縁も、仕事の流れも、体の軽さまで、ぜんぶ、はじき返していました。流れのほうが、あなたを探せなかったんです。</p>
     <p class="rv">だから大切なのは、もっと頑張ることではありません。<strong>もう一度、自分の番を取ること</strong>。たった一度でいい。誰かじゃなく、自分を選ぶ。その瞬間に、針は動き出します。</p>
-    <p class="rv">この石は、あの聖地の山の上で長く守られてきたものです。11月23日——夜明け前、門が開くわずかな時間に、2,000の願いを一つ残らず納めたその足で、選ばれた方の分だけを、私がこの手でいただいてきました。お迎えが決まった方の石には、あなたのお名前を結んで、お送りします。</p>
+    <p class="rv">この石は、あの聖地の山の上で長く守られてきたものです。11月23日——夜明け前、門が開くわずかな時間に、<span class="p23-pre">2,000の願いを一つ残らず納めたその足で、選ばれた方の分だけを、私がこの手でいただいてまいります。</span><span class="p23-post">2,000の願いを一つ残らず納めたその足で、選ばれた方の分だけを、私がこの手でいただいてきました。</span>お迎えが決まった方の石には、あなたのお名前を結んで、お送りします。</p>
     <p class="rv">このルチルは、ブレスレットとして身につけていただいても構いません。ただ、いちばん力を感じやすいのは、枕元や玄関、ご家族の集まる場所に、そっと置いておく形です。あなたのそばで、止まったままの針を、静かに進め続けてくれます。</p>
   </div>
 </section>
@@ -461,7 +464,7 @@ html[data-sale=pre] #salegate .p,html[data-sale=closed] #salegate .c{display:blo
       <tr><th>カラー</th><td>クリア／ゴールド系</td></tr>
       <tr><th>石言葉</th><td>金運・財運・良縁・成功・流れの活性</td></tr>
       <tr><th>浄化方法</th><td>月光浴・水晶クラスター・セージ・音叉など</td></tr>
-      <tr><th>お届け</th><td>ご注文確定後、1ヶ月以内に発送（追跡番号をお知らせします）</td></tr>
+      <tr><th>お届け</th><td>ご注文確定後、1ヶ月以内を目安に発送（追跡番号をお知らせします）</td></tr>
     </table>
     <p class="rv" style="font-size:13px;color:var(--moon-dim)">自然から生まれた天然石には、インクルージョンやクラック、色味や模様の違いが見られる場合があります。これは天然石ならではの個性であり、石の魅力のひとつです。一点ずつ表情が異なるため、あなたのもとへ届く一本は、世界にひとつだけのものです。</p>
   </div>
@@ -491,6 +494,7 @@ html[data-sale=pre] #salegate .p,html[data-sale=closed] #salegate .c{display:blo
     <p class="rv">家の運気を変えたくて、風水で引っ越しをすれば、何百万円もかかります。不安になるたびに占いに通えば、月に1万円、年に10万円以上——それが、この先も、ずっと続きます。</p>
     <p class="rv">この石は、一度だけです。3年そばに置けば、<em>1日あたり、約73円</em>。缶コーヒー1本より安いお守りが、あなたの枕元で、毎晩、止まったままの針を静かに進め続けてくれます。10年なら、1日22円です。</p>
     <p class="rv">そのかわり、数は30本が限界です。<strong>今回で、最後です。</strong></p>
+    <p class="rv">ただ、生活費を削ってまで迎えることはしないでください。ご家族と相談が必要な方は、その時間を取ってからで大丈夫です。</p>
   </div>
 </section>
 
@@ -564,7 +568,7 @@ html[data-sale=pre] #salegate .p,html[data-sale=closed] #salegate .c{display:blo
     <div class="gline"></div>
     <div class="rv">
     <details><summary>返品・交換はできますか？</summary><div class="a"><p>申し訳ありません。この石は一本ずつ、お迎えになる方を視てお仕立てしている1点ものです。そのため、<b>お客様のご都合による返品・交換はお受けできません</b>。</p><p>だからこそ、迷いがあるうちは、無理に手にしないでください。「迎えたい」と心が決まった方にだけ、来てほしいと思っています。</p><p>万が一、お届けの際の破損など明らかな不備があった場合は、商品到着後7日以内にLINEでご連絡ください。責任を持って対応いたします。</p></div></details>
-    <details><summary>いつ届きますか？</summary><div class="a"><p>ご注文確定後、<b>1ヶ月以内</b>に発送いたします。一本ずつ丁寧に浄化し、発送の準備を進めます。</p><p>発送が完了しましたら、追跡番号をお知らせします。楽しみに待っていてくださいね。</p></div></details>
+    <details><summary>いつ届きますか？</summary><div class="a"><p>ご注文確定後、<b>1ヶ月以内</b>を目安に発送いたします。一本ずつ丁寧に浄化し、発送の準備を進めます。</p><p>発送が完了しましたら、追跡番号をお知らせします。楽しみに待っていてくださいね。</p></div></details>
     <details><summary>銀行振込について教えてください</summary><div class="a"><p>銀行振込でのお支払いに対応しております。振込先はSTORES（ストアーズ）の口座となります。</p><p>ご注文後、STORESからお送りするメール内に振込先情報が記載されますので、そちらにお振込みください。振込手数料はお客様ご負担となります。</p></div></details>
     <details><summary>来月まで待ってもらえますか？</summary><div class="a"><p>申し訳ございません。本商品は限定30本のため、お待たせすることが難しい状況です。</p><p>クレジットカード、銀行振込などをご利用いただき、お早めのお手続きをお願いいたします。</p></div></details>
     <details><summary>写真と実物の色や模様が違うことはありますか？</summary><div class="a"><p>天然石のため、色、模様、形状等が一点ずつ異なります。インクルージョン（内包物）やクラック、細かな欠けや凹凸が見られる場合がありますが、これは自然から生まれた天然石ならではの個性です。</p><p><b>写真はイメージです。</b>掲載している商品画像は参考画像となります。ご利用の画面や環境等により、実物の色と異なって見えることがあります。</p></div></details>
